@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M- Snacks</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><strong>M- Snacks</strong><button id="settingsToggle" type="button" aria-controls="settings" aria-expanded="false" hidden>Settings</button></header>
+<main>
+  <div id="startup" class="card" hidden><p id="startupStatus" role="status"></p><button id="retryStartup" type="button" hidden>Retry</button></div>
+  <form id="settings" class="card" hidden>
+    <h2>Google Apps Script connection</h2>
+    <label class="field">Deployment URL<input id="deploymentUrl" type="url" value="https://script.google.com/macros/s/AKfycbzv9F0lr8IhHqZ2fsZVGRYQ6sde9fv0tUDNl0UM1bJpO0i7raZZxOLvxAWO1aHGv65J/exec" placeholder="https://script.google.com/macros/s/…/exec" required></label>
+    <div class="actions"><button class="primary">Save URL</button></div>
+    <p id="settingsStatus" role="status" hidden></p>
+  </form>
+  <section id="app" hidden>
+    <div id="nav" class="actions" hidden>
+      <button id="entryTab" type="button" aria-pressed="true">Entry</button>
+      <button id="reviewTab" type="button" aria-pressed="false">Reports</button>
+    </div>
+    <form id="entry">
+      <div class="top">
+        <div><h1>Daily production</h1><p>Enter only the quantity you are adding now (morning, evening…). Each save is added to the day's total. Leave unused fields blank.</p></div>
+        <label class="field">Production date<input id="date" type="date" required></label>
+      </div>
+      <p id="dayStatus" role="status" hidden></p>
+      <div class="split">
+        <section class="card"><h2>Raw materials used</h2>
+          <div id="materials"></div><div id="custom"></div>
+          <button id="add" type="button">+ Add raw material</button>
+        </section>
+        <section class="card"><h2>Finished products</h2>
+          <p>For a yield comparison, enter the matching input quantity as well.</p>
+          <div class="row product coltitle"><span>Product</span><span>Input</span><span>Output kg</span></div>
+          <div id="products"></div>
+        </section>
+      </div>
+      <div class="actions"><button class="primary">Save production</button><p id="entryStatus" role="status" hidden></p></div>
+    </form>
+    <section id="review" hidden>
+      <h1>Production reports</h1>
+      <p id="reviewStatus" role="status" hidden></p>
+      <form id="reportFilter" class="card">
+        <div class="actions">
+          <label class="field">From<input id="reportDate" type="date" required></label>
+          <label class="field">To<input id="reportEnd" type="date" required></label>
+          <button class="primary">Run report</button>
+        </div>
+      </form>
+      <section class="card"><h2>Finished products</h2>
+        <div id="finishedTotals" class="scroll"></div>
+        <h3>Actual vs estimated output</h3>
+        <p>Chart totals use entries with a recorded product input. Estimates use the historical average yield below.</p>
+        <div id="yieldChart"></div>
+      </section>
+      <section class="card"><h2>Historical average yield</h2>
+        <p>Average yield is total output divided by total recorded input. Lot-based yields describe batch output. The chat gives no ingredient weights for those lots. Check the number of reports before using a yield as a benchmark.</p>
+        <div class="scroll" id="baseline"></div>
+      </section>
+      <section class="card"><h2>Raw materials used</h2>
+        <div id="usageTotals" class="scroll"></div>
+        <h3>Production submissions</h3>
+        <p>Estimated output uses the matching product input and historical yield. Differences are shown in kg for review.</p>
+        <div id="records"></div>
+      </section>
+    </section>
+  </section>
+</main>
+<script src="app.js" defer></script>
+</body>
+</html>
