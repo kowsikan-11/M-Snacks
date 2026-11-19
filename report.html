@@ -32,11 +32,19 @@
           <div id="materials"></div><div id="custom"></div>
           <button id="add" type="button">+ Add raw material</button>
         </section>
-        <section class="card"><h2>Finished products</h2>
-          <p>For a yield comparison, enter the matching input quantity as well.</p>
-          <div class="row product coltitle"><span>Product</span><span>Input</span><span>Output kg</span></div>
-          <div id="products"></div>
-        </section>
+        <div class="stack">
+          <section class="card"><h2>Finished products</h2>
+            <p>Total quantity of product produced from the raw material used in lots. One lot is 4kg of Finished Product.</p>
+            <div class="row product coltitle"><span>Product</span><span>No. of Lot</span><span>Output kg</span></div>
+            <div id="products"></div><div id="newProducts"></div>
+            <button id="addProduct" type="button">+ ADD NEW PRODUCTION</button>
+          </section>
+          <section class="card"><h2>Import products</h2>
+            <div class="row import coltitle"><span>Product name</span><span>Bundle of 80kg</span><span>Bundle of 330kg</span><span></span></div>
+            <div id="imports"></div>
+            <button id="addImport" type="button">+ Add import product</button>
+          </section>
+        </div>
       </div>
       <div class="actions"><button class="primary">Save production</button><p id="entryStatus" role="status" hidden></p></div>
     </form>
@@ -59,6 +67,9 @@
       <section class="card"><h2>Historical average yield</h2>
         <p>Average yield is total output divided by total recorded input. Lot-based yields describe batch output. The chat gives no ingredient weights for those lots. Check the number of reports before using a yield as a benchmark.</p>
         <div class="scroll" id="baseline"></div>
+      </section>
+      <section class="card"><h2>Import products</h2>
+        <div id="importTotals" class="scroll"></div>
       </section>
       <section class="card"><h2>Raw materials used</h2>
         <div id="usageTotals" class="scroll"></div>

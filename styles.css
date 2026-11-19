@@ -20,3 +20,8 @@ details{border-top:1px solid var(--line);padding:12px 0}summary{cursor:pointer;f
 
 .sofar{display:block;font-size:.8rem;font-weight:650;color:#17533a}.sofar:empty{display:none}
 .has-total{background:#f3f9f2}#dayStatus{margin-bottom:14px}
+.stack{display:grid;gap:18px}.stack>.card{margin:0}
+.import{grid-template-columns:minmax(0,1fr) repeat(2,minmax(70px,92px)) 34px}.import button{padding:6px 0}
+.newproduct input:first-child{font-weight:650}
+@media(max-width:760px){.split>.stack{grid-row:1}.import{grid-template-columns:minmax(0,1fr) repeat(2,58px) 30px;gap:6px}}
+.newname{display:grid;grid-template-columns:minmax(0,1fr) 34px;gap:6px}.newname button{padding:6px 0}#newProducts .row{border-top:1px dashed var(--line)}#addProduct{margin-top:8px}
